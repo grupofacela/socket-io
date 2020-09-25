@@ -2,21 +2,14 @@
 
 	use Workerman\Worker;
 	use PHPSocketIO\SocketIO;
-
 	require_once '../vendor/autoload.php';
 
-	// SSL context
-	$context = array(
-	    'ssl' => array(
-	        'local_cert'  => '/your/path/of/server.pem',
-	        'local_pk'    => '/your/path/of/server.key',
-	        'verify_peer' => false
-	    )
-	);
-	$io = new SocketIO(8080, $context);
-
-	$io->on('connection', function ($connection) use ($io) {
-	    echo "New connection coming\n";
+	// Listen port 2021 for socket.io client
+	$io = new SocketIO(2021);
+	$io->on('connection', function ($socket) use ($io) {
+	    $socket->on('chat message', function ($msg) use ($io) {
+	        $io->emit('chat message', $msg);
+	    });
 	});
 
 	Worker::runAll();
