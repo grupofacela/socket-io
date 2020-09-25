@@ -7,11 +7,9 @@
 	// Listen port 2021 for socket.io client
 	$io = new SocketIO(3000);
 	$io->on('connection', function ($socket) use ($io) {
-		$id_user;
-	    $socket->on('changeRoom', function ($id) use ($io) {
-	        $id_user = $id;
-	        $io->join($id_user);
-	        echo "Se unio ".$id_user;
+	    $socket->on('changeRoom', function ($room) use ($io) {
+	        $io->join($room);
+	        echo $io->room;
 	    });
 	    $socket->on('reload', function ($msg) use ($io) {
 	    	$io->to($id_user)->emit("message", array(
