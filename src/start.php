@@ -12,9 +12,10 @@
 	        $id_user = $id;
 	        $io->join($id_user);
 	        echo "Se unio ".$id_user;
+	    });
 	    $socket->on('reload', function ($msg) use ($io) {
 	    	$io->to($id_user)->emit("message", array(
-	            'message' => 'reload'
+	            'message' => $socket->username
 	        ));
 	    });
 	});
