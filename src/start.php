@@ -8,8 +8,8 @@
 	// SSL context
 	$context = array(
 	    'ssl' => array(
-	        'local_cert'  => '/your/path/of/server.pem',
-	        'local_pk'    => '/your/path/of/server.key',
+	        'local_cert'  => '/home/facela_shop_2020/fclntwrkcntndlvrd.com.pem',
+	        'local_pk'    => '/home/facela_shop_2020/fclntwrkcntndlvrd.com.key',
 	        'verify_peer' => false
 	    )
 	);
