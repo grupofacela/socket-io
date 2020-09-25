@@ -7,9 +7,15 @@
 	// Listen port 2021 for socket.io client
 	$io = new SocketIO(3000);
 	$io->on('connection', function ($socket) use ($io) {
-	    $socket->on('chat message', function ($msg) use ($io) {
-	        $io->emit('chat message', $msg);
-	    });
+		echo "Se conecto un usuario";
+		// $id_user;
+	 //    $socket->on('changeRoom', function ($id) use ($io) {
+	 //        $id_user = $id;
+	 //        $socket->join($id_user);
+	 //    });
+	    // $socket->on('reload', function ($msg) use ($io) {
+	    // 	$io->to($id_user)->emit("message", "reload");
+	    // });
 	});
 
 	Worker::runAll();
