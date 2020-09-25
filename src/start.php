@@ -11,6 +11,9 @@
 	    $socket->on('changeRoom', function ($id) use ($io) {
 	        $id_user = $id;
 	        $io->join($id_user);
+	        $io->to($id_user)->emit("message", array(
+	            'message' => 'reload'
+	        ));
 	    });
 	    $socket->on('reload', function ($msg) use ($io) {
 	    	$io->to($id_user)->emit("message", array(
