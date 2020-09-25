@@ -9,6 +9,7 @@
 	$io->on('connection', function ($socket) use ($io) {
 		$id_user;
 	    $socket->on('changeRoom', function ($id) use ($io) {
+	    	echo "Se obtuvo el ID: ".$id;
 	        $id_user = $id;
 	        $socket->join($id_user);
 	    });
